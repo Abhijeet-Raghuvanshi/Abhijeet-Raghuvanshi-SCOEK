@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char S1[100], S2[100], S3[100];
+    int choice;
+
+    printf("Enter the first string (S1): ");
+    fgets(S1, sizeof(S1), stdin);
+    S1[strcspn(S1, "\n")] = '\0';
+
+    printf("Enter the second string (S2): ");
+    fgets(S2, sizeof(S2), stdin);
+    S2[strcspn(S2, "\n")] = '\0';
+
+    do {
+        printf("\nChoose an operation:\n");
+        printf("1. Concatenate S2 to S1\n");
+        printf("2. Find the length of a string\n");
+        printf("3. Compare S1 and S2\n");
+        printf("4. Copy S2 to S1\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        getchar();
+
+        switch (choice) {
+            case 1:
+                strcat(S1, S2);
+                printf("Result of concatenation (S1): %s\n", S1);
+                break;
+
+            case 2:
+                printf("Length of S1: %lu\n", strlen(S1));
+                printf("Length of S2: %lu\n", strlen(S2));
+                break;
+
+            case 3:
+                if (strcmp(S1, S2) == 0)
+                    printf("S1 and S2 are equal.\n");
+                else if (strcmp(S1, S2) < 0)
+                    printf("S1 is less than S2.\n");
+                else
+                    printf("S1 is greater than S2.\n");
+                break;
+
+            case 4:
+                strcpy(S1, S2);
+                printf("S1 after copying S2: %s\n", S1);
+                break;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 5);
+}

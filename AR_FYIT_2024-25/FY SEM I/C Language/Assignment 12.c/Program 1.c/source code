@@ -1,0 +1,18 @@
+#include<stdio.h>
+void area(float , float);
+
+void area(float base, float height)
+{
+    float total;
+    total=(base*height)/2;
+    printf("area is: %.2f",total);
+    
+};
+int main()
+{
+    float base;
+    float height;
+    printf("enter the two value:");
+    scanf("%f %f", &base,&height);
+    area(base,height);
+}

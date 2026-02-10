@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int num1, num2, sum;
+    int *ptr1, *ptr2; // Pointers to hold the addresses of num1 and num2
+
+    // Input two numbers
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    // Assign the addresses of num1 and num2 to the pointers
+    ptr1 = &num1;
+    ptr2 = &num2;
+
+    // Perform addition using pointers
+    sum = *ptr1 + *ptr2;
+
+    // Display the result
+    printf("The sum of %d and %d is: %d\n", *ptr1, *ptr2, sum);
+
+}

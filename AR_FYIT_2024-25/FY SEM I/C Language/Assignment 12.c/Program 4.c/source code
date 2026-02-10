@@ -1,0 +1,24 @@
+#include<stdio.h>
+void swaping(int, int);
+void swaping(int a, int b)
+{
+    int c;
+    c=a;
+    a=b;
+    b=c;
+    printf("the swap value of a is:%d\n",a);
+    printf("the swap value of b is:%d\n",b);
+    
+};
+int main()
+{
+    int a;
+    int b;
+    printf("enter the value of of a:");
+    scanf("%d",&a);
+    
+    printf("enter the value of of b:");
+    scanf("%d",&b);
+    
+    swaping(a,b);
+}

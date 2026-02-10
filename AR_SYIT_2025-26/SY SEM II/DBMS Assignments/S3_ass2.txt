@@ -1,0 +1,253 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ABHIJEET> mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE S3ASS2;
+Database changed
+mysql> INSERT INTO Books VALUES(2966, 'Can't Hurt Me', 'David Goggins', 192.65);
+    '> ;
+    '> ;;
+    '> ^C
+mysql> show tables;
++------------------+
+| Tables_in_s3ass2 |
++------------------+
+| books            |
+| member           |
++------------------+
+2 rows in set (0.08 sec)
+
+mysql> INSERT INTO Books VALUES(2966, 'Can't Hurt Me', 'David Goggins', 192.65);
+    '> ^C
+mysql> SELECT * FROM Books;
++--------+-----------------------------------------+-------------------+--------+
+| BookID | Title                                   | Author            | Price  |
++--------+-----------------------------------------+-------------------+--------+
+|   1452 | Atomic Habits                           | James Clear       | 550.68 |
+|   1562 | Deep Work                               | Cal Newport       | 704.96 |
+|   2584 | Think and Grow Rich                     | Napoleon Hill     | 250.55 |
+|   3651 | How to Win Friends and Influence People | Dale Carnegie     | 350.96 |
+|   5861 | Rich Dad Poor Dad                       | Robert Kiyosaki   | 450.06 |
+|   8642 | Ikigai                                  | Francesc Miralles | 467.16 |
+|   8684 | The Alchemist                           | Paulo Coelho      | 300.76 |
+|   9612 | The Psychology of Money                 | Morgan Housel     | 600.12 |
++--------+-----------------------------------------+-------------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Members;
+ERROR 1146 (42S02): Table 's3ass2.members' doesn't exist
+mysql> SELECT * FROM Member;
+Empty set (0.00 sec)
+
+mysql> desc Member;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| MemberID       | int         | NO   | PRI | NULL    |       |
+| MemberName     | varchar(50) | YES  |     | NULL    |       |
+| Address        | varchar(50) | YES  |     | NULL    |       |
+| MembershipType | varchar(50) | YES  |     | NULL    |       |
+| EmailID        | varchar(50) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.05 sec)
+
+mysql> INSERT INTO Member(101, 'Shubham', 'Paithan', 'Premium', 'shubham@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '101, 'Shubham', 'Paithan', 'Premium', 'shubham@gmail.com')' at line 1
+mysql> INSERT INTO Member VALUES(101, 'Shubham', 'Paithan', 'Premium', 'shubham@gmail.com');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Member VALUES(102, 'Kshitij', 'Shirampur', 'Classic', 'kshitij@outlook.com');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Member VALUES(103, 'Sahil', 'Malkapur', 'Classic', 'sahil@gmail.com');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Member VALUES(104, 'Manish', 'Mumbai', 'Premium', 'manish@yahoo.com');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Member VALUES(105, 'Maanthan', 'Wardha', 'Vip', 'manthan@yahoo.com');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Member VALUES(106, 'Anshuman', 'Beed', 'Classic', 'anshuman@outlook.com');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Member VALUES(107, 'Abhi', 'Nandurbar', 'Vip', 'abhijeet@outlook.com');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO Member VALUES(108, 'Om', 'Shirdi', 'Classic', 'om@gmail.com');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM Member;
++----------+------------+-----------+----------------+----------------------+
+| MemberID | MemberName | Address   | MembershipType | EmailID              |
++----------+------------+-----------+----------------+----------------------+
+|      101 | Shubham    | Paithan   | Premium        | shubham@gmail.com    |
+|      102 | Kshitij    | Shirampur | Classic        | kshitij@outlook.com  |
+|      103 | Sahil      | Malkapur  | Classic        | sahil@gmail.com      |
+|      104 | Manish     | Mumbai    | Premium        | manish@yahoo.com     |
+|      105 | Maanthan   | Wardha    | Vip            | manthan@yahoo.com    |
+|      106 | Anshuman   | Beed      | Classic        | anshuman@outlook.com |
+|      107 | Abhi       | Nandurbar | Vip            | abhijeet@outlook.com |
+|      108 | Om         | Shirdi    | Classic        | om@gmail.com         |
++----------+------------+-----------+----------------+----------------------+
+8 rows in set (0.00 sec)
+
+mysql> CREATE TABLE BorrowedBooks(BorrowedID INT PRIMARY KEY, MemberID INT, BookID INT, BorrowDate DATE, ReturnDate DATE, FOREGIN KEY (MemberID) REFERENCES Member(MemberID), FOREGIN KEY(BookID) REFERENCES Books(BookID));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'KEY (MemberID) REFERENCES Member(MemberID), FOREGIN KEY(BookID) REFERENCES Books' at line 1
+mysql> CREATE TABLE BorrowedBooks(BorrowedID INT PRIMARY KEY, MemberID INT, BookID INT, BorrowDate DATE, ReturnDate DATE, FOREIGN KEY (MemberID) REFERENCES Member(MemberID), FOREIGN KEY(BookID) REFERENCES Books(BookID));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> desc borrowedbooks;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| BorrowedID | int  | NO   | PRI | NULL    |       |
+| MemberID   | int  | YES  | MUL | NULL    |       |
+| BookID     | int  | YES  | MUL | NULL    |       |
+| BorrowDate | date | YES  |     | NULL    |       |
+| ReturnDate | date | YES  |     | NULL    |       |
++------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(1, 106, 5861, '2025-11-21', '2026-01-23');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(2, 102, 1452, '2025-09-19', '2025-12-07');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(3, 102, 9612, '2025-12-12', '2026-02-02');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(4, 101, 3651, '2025-07-02', '2025-10-27');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(5, 107, 8684, '2025-12-23', '2026-02-07');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(6, 107, 1562, '2025-03-27', '2026-08-17');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(7, 108, 5861, '2025-05-25', '2026-01-02');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(8, 101, 9612, '2025-09-01', '2025-11-20');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(9, 105, 8642, '2025-01-14', '2025-05-21');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(10, 101, 8684, '2025-04-15', '2025-09-08');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO BorrowedBooks VALUES(11, 103, 9612, '2025-06-25', '2025-10-17');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from Borrowedbooks;
++------------+----------+--------+------------+------------+
+| BorrowedID | MemberID | BookID | BorrowDate | ReturnDate |
++------------+----------+--------+------------+------------+
+|          1 |      106 |   5861 | 2025-11-21 | 2026-01-23 |
+|          2 |      102 |   1452 | 2025-09-19 | 2025-12-07 |
+|          3 |      102 |   9612 | 2025-12-12 | 2026-02-02 |
+|          4 |      101 |   3651 | 2025-07-02 | 2025-10-27 |
+|          5 |      107 |   8684 | 2025-12-23 | 2026-02-07 |
+|          6 |      107 |   1562 | 2025-03-27 | 2026-08-17 |
+|          7 |      108 |   5861 | 2025-05-25 | 2026-01-02 |
+|          8 |      101 |   9612 | 2025-09-01 | 2025-11-20 |
+|          9 |      105 |   8642 | 2025-01-14 | 2025-05-21 |
+|         10 |      101 |   8684 | 2025-04-15 | 2025-09-08 |
+|         11 |      103 |   9612 | 2025-06-25 | 2025-10-17 |
++------------+----------+--------+------------+------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Books WHERE Title LIKE '%The%';
++--------+-------------------------+---------------+--------+
+| BookID | Title                   | Author        | Price  |
++--------+-------------------------+---------------+--------+
+|   8684 | The Alchemist           | Paulo Coelho  | 300.76 |
+|   9612 | The Psychology of Money | Morgan Housel | 600.12 |
++--------+-------------------------+---------------+--------+
+2 rows in set (0.04 sec)
+
+mysql> SELECT * FROM Books WHERE Title LIKE '_________';
++--------+-----------+-------------+--------+
+| BookID | Title     | Author      | Price  |
++--------+-----------+-------------+--------+
+|   1562 | Deep Work | Cal Newport | 704.96 |
++--------+-----------+-------------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM Books WHERE Title LIKE '______';
++--------+--------+-------------------+--------+
+| BookID | Title  | Author            | Price  |
++--------+--------+-------------------+--------+
+|   8642 | Ikigai | Francesc Miralles | 467.16 |
++--------+--------+-------------------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM Books WHERE Title NOT LIKE '%The%';
++--------+-----------------------------------------+-------------------+--------+
+| BookID | Title                                   | Author            | Price  |
++--------+-----------------------------------------+-------------------+--------+
+|   1452 | Atomic Habits                           | James Clear       | 550.68 |
+|   1562 | Deep Work                               | Cal Newport       | 704.96 |
+|   2584 | Think and Grow Rich                     | Napoleon Hill     | 250.55 |
+|   3651 | How to Win Friends and Influence People | Dale Carnegie     | 350.96 |
+|   5861 | Rich Dad Poor Dad                       | Robert Kiyosaki   | 450.06 |
+|   8642 | Ikigai                                  | Francesc Miralles | 467.16 |
++--------+-----------------------------------------+-------------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Member WHERE MembershipType = 'Vip' OR MembershipType = 'Premium';
++----------+------------+-----------+----------------+----------------------+
+| MemberID | MemberName | Address   | MembershipType | EmailID              |
++----------+------------+-----------+----------------+----------------------+
+|      101 | Shubham    | Paithan   | Premium        | shubham@gmail.com    |
+|      104 | Manish     | Mumbai    | Premium        | manish@yahoo.com     |
+|      105 | Maanthan   | Wardha    | Vip            | manthan@yahoo.com    |
+|      107 | Abhi       | Nandurbar | Vip            | abhijeet@outlook.com |
++----------+------------+-----------+----------------+----------------------+
+4 rows in set (0.04 sec)
+
+mysql> SELECT * FROM Books WHERE Price > 200.00;
++--------+-----------------------------------------+-------------------+--------+
+| BookID | Title                                   | Author            | Price  |
++--------+-----------------------------------------+-------------------+--------+
+|   1452 | Atomic Habits                           | James Clear       | 550.68 |
+|   1562 | Deep Work                               | Cal Newport       | 704.96 |
+|   2584 | Think and Grow Rich                     | Napoleon Hill     | 250.55 |
+|   3651 | How to Win Friends and Influence People | Dale Carnegie     | 350.96 |
+|   5861 | Rich Dad Poor Dad                       | Robert Kiyosaki   | 450.06 |
+|   8642 | Ikigai                                  | Francesc Miralles | 467.16 |
+|   8684 | The Alchemist                           | Paulo Coelho      | 300.76 |
+|   9612 | The Psychology of Money                 | Morgan Housel     | 600.12 |
++--------+-----------------------------------------+-------------------+--------+
+8 rows in set (0.04 sec)
+
+mysql> SELECT * FROM Books WHERE Price < 250.00;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM Books WHERE Price < 300.00;
++--------+---------------------+---------------+--------+
+| BookID | Title               | Author        | Price  |
++--------+---------------------+---------------+--------+
+|   2584 | Think and Grow Rich | Napoleon Hill | 250.55 |
++--------+---------------------+---------------+--------+
+1 row in set (0.00 sec)
+
+mysql>

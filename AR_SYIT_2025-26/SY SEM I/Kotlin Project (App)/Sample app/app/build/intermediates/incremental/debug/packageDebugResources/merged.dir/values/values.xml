@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="background">#FFFFFFFF</color>
+    <color name="on_background">#FF000000</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="primary">#006D5B</color>
+    <color name="primary_variant">#005246</color>
+    <color name="secondary">#FFC107</color>
+    <string name="app_name">Seva Industries</string>
+    <string name="menu_contact">Contact</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_products">Products</string>
+    <style name="Theme.SevaIndustries" parent="Theme.Material3.Light.NoActionBar">
+		<item name="colorPrimary">@color/primary</item>
+		<item name="colorPrimaryContainer">@color/primary_variant</item>
+		<item name="colorSecondary">@color/secondary</item>
+		<item name="android:statusBarColor" ns1:targetApi="l">@color/primary_variant</item>
+	</style>
+</resources>

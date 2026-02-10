@@ -1,0 +1,38 @@
+com.sevaindustries.app-annotation-experimental-1.4.0-0 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\019635497077db0f37603b67fd5b5753\transformed\annotation-experimental-1.4.0\res
+com.sevaindustries.app-lifecycle-livedata-core-2.6.2-1 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\173eced987d4c5449f3518a17d9338f6\transformed\lifecycle-livedata-core-2.6.2\res
+com.sevaindustries.app-fragment-1.5.4-2 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\1b15746a9fe45ff1d56ff527eb1dcba7\transformed\fragment-1.5.4\res
+com.sevaindustries.app-drawerlayout-1.1.1-3 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\2929028251db23429c92ab6a3858164c\transformed\drawerlayout-1.1.1\res
+com.sevaindustries.app-activity-1.9.2-4 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\295017b198ac764f5fb806e2167d344d\transformed\activity-1.9.2\res
+com.sevaindustries.app-lifecycle-process-2.6.2-5 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\323a65146c1312990493ac0a68725787\transformed\lifecycle-process-2.6.2\res
+com.sevaindustries.app-emoji2-views-helper-1.3.0-6 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\3402e82b3a6df5d56960e86c2313c936\transformed\emoji2-views-helper-1.3.0\res
+com.sevaindustries.app-lifecycle-livedata-2.6.2-7 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\3787084e05364615e39fd5fce781f35f\transformed\lifecycle-livedata-2.6.2\res
+com.sevaindustries.app-core-1.13.1-8 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\4627d66caa8648e88a57e90243db9170\transformed\core-1.13.1\res
+com.sevaindustries.app-savedstate-ktx-1.2.1-9 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\5cc1603afc09b2f844e569a876c7859d\transformed\savedstate-ktx-1.2.1\res
+com.sevaindustries.app-lifecycle-viewmodel-ktx-2.6.2-10 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\5eae5b7d448f53fb09caf90c85b9f77b\transformed\lifecycle-viewmodel-ktx-2.6.2\res
+com.sevaindustries.app-recyclerview-1.1.0-11 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\6228a0ed483200d315a66a268e645fb8\transformed\recyclerview-1.1.0\res
+com.sevaindustries.app-material-1.12.0-12 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\67cd1faf1a42aad984e0a4c16ca7b0c7\transformed\material-1.12.0\res
+com.sevaindustries.app-constraintlayout-2.1.4-13 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\6dc1f6bc630f9b499e613c91a633ea79\transformed\constraintlayout-2.1.4\res
+com.sevaindustries.app-core-ktx-1.13.1-14 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\6e01d9186f065047034f3a62b61c8853\transformed\core-ktx-1.13.1\res
+com.sevaindustries.app-transition-1.5.0-15 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\7792712f4ce4ccdecddf9c42c62dafb1\transformed\transition-1.5.0\res
+com.sevaindustries.app-appcompat-1.7.0-16 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\79b5c59faf69794efabbc75a1c096c6f\transformed\appcompat-1.7.0\res
+com.sevaindustries.app-cardview-1.0.0-17 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\8020bb6d66ec256923eab72ac3681af5\transformed\cardview-1.0.0\res
+com.sevaindustries.app-viewpager2-1.0.0-18 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\8f76b9be3b28a06dbbc1158b2b48e2d7\transformed\viewpager2-1.0.0\res
+com.sevaindustries.app-savedstate-1.2.1-19 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\90d160531169f96b6b59567542e686ea\transformed\savedstate-1.2.1\res
+com.sevaindustries.app-coordinatorlayout-1.1.0-20 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\9214419b4e55634359ba9050258de7fa\transformed\coordinatorlayout-1.1.0\res
+com.sevaindustries.app-appcompat-resources-1.7.0-21 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\958566480ccd7ff93a8269c362c91efc\transformed\appcompat-resources-1.7.0\res
+com.sevaindustries.app-lifecycle-viewmodel-savedstate-2.6.2-22 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\9913011022e32934fd3f92b8856a27b6\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.sevaindustries.app-emoji2-1.3.0-23 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\9bff40f9308c4a0ee4404c02e91a924b\transformed\emoji2-1.3.0\res
+com.sevaindustries.app-core-runtime-2.2.0-24 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\9dfde01d1ecf692ba9a3d0f7a8d1a66c\transformed\core-runtime-2.2.0\res
+com.sevaindustries.app-lifecycle-runtime-ktx-2.6.2-25 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\b2f0d83b6d197e079d89d7fdca6a8b4e\transformed\lifecycle-runtime-ktx-2.6.2\res
+com.sevaindustries.app-activity-ktx-1.9.2-26 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\b31c15215a1eae20c923a2bdb6f8d49e\transformed\activity-ktx-1.9.2\res
+com.sevaindustries.app-lifecycle-runtime-2.6.2-27 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\db3a47bc8326e71d11e02e438ac1f476\transformed\lifecycle-runtime-2.6.2\res
+com.sevaindustries.app-lifecycle-viewmodel-2.6.2-28 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\eb2d310baa221a9a1e60f3659542a389\transformed\lifecycle-viewmodel-2.6.2\res
+com.sevaindustries.app-startup-runtime-1.1.1-29 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\ed941a92fc45a3a38b683c09be288db1\transformed\startup-runtime-1.1.1\res
+com.sevaindustries.app-profileinstaller-1.3.1-30 C:\Users\ABHIJEET\.gradle\caches\9.0-milestone-1\transforms\f1a336612924a0a677e6c6c93aa96c5c\transformed\profileinstaller-1.3.1\res
+com.sevaindustries.app-pngs-31 D:\Sample app\app\build\generated\res\pngs\debug
+com.sevaindustries.app-resValues-32 D:\Sample app\app\build\generated\res\resValues\debug
+com.sevaindustries.app-packageDebugResources-33 D:\Sample app\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.sevaindustries.app-packageDebugResources-34 D:\Sample app\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.sevaindustries.app-debug-35 D:\Sample app\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.sevaindustries.app-debug-36 D:\Sample app\app\src\debug\res
+com.sevaindustries.app-main-37 D:\Sample app\app\src\main\res

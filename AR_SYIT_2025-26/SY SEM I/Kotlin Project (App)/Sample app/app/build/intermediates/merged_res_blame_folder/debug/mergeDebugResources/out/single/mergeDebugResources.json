@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.sevaindustries.app-debug-35:/menu_menu_bottom_nav.xml.flat",
+        "source": "com.sevaindustries.app-main-37:/menu/menu_bottom_nav.xml"
+    },
+    {
+        "merged": "com.sevaindustries.app-debug-35:/layout_activity_main.xml.flat",
+        "source": "com.sevaindustries.app-main-37:/layout/activity_main.xml"
+    }
+]

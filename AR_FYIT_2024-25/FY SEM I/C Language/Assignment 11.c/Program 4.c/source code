@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+struct Student {
+    int rollno;
+    char name[50];
+    char class_name[20];
+    char division[5];
+};
+
+int main() {
+    const int NUM_STUDENTS = 20; // Number of students
+    struct Student students[NUM_STUDENTS]; // Array of Student structures
+
+    for (int i = 0; i < NUM_STUDENTS; i++) {
+        printf("\nEnter details for Student %d:\n", i + 1);
+        printf("Enter Roll Number: ");
+        scanf("%d", &students[i].rollno);
+
+        printf("Enter Name: ");
+        scanf(" %[^\n]", students[i].name); // To read strings with spaces
+
+        printf("Enter Class: ");
+        scanf(" %[^\n]", students[i].class_name);
+
+        printf("Enter Division: ");
+        scanf(" %[^\n]", students[i].division);
+    }
+
+    printf("\nStudent Details:\n");
+    for (int i = 0; i < NUM_STUDENTS; i++) {
+        printf("\nStudent %d:\n", i + 1);
+        printf("Roll Number: %d\n", students[i].rollno);
+        printf("Name: %s\n", students[i].name);
+        printf("Class: %s\n", students[i].class_name);
+        printf("Division: %s\n", students[i].division);
+    }
+
+    return 0;
+}

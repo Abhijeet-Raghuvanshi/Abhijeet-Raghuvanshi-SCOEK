@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char inputString[1000];
+
+    printf("Enter a string: ");
+    fgets(inputString, sizeof(inputString), stdin);
+    size_t length = strlen(inputString);
+    if (length > 0 && inputString[length - 1] == '\n') {
+        inputString[length - 1] = '\0';
+    }
+    int vowelCount = 0;
+    for (int i = 0; inputString[i] != '\0'; i++) {
+        char ch = inputString[i];
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+            ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+            vowelCount++;
+        }
+    }
+    printf("The total number of vowels in the string: %d\n", vowelCount);
+}

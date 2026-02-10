@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char inputString[1000];
+
+    printf("Enter a string: ");
+    fgets(inputString, sizeof(inputString), stdin); 
+    size_t length = strlen(inputString);
+    if (length > 0 && inputString[length - 1] == '\n') {
+        inputString[length - 1] = '\0';
+    }
+    int totalCharacters = strlen(inputString);
+    printf("The total number of characters in the string: %d\n", totalCharacters);
+
+}

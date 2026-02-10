@@ -1,0 +1,3 @@
+rootProject.name = "SevaIndustriesApp"
+include ":app"
+

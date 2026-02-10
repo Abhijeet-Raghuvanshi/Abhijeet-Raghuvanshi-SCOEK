@@ -1,0 +1,818 @@
+____________________________________________________________________________________________________________________________________________________________________________________________
+
+Date - 06 Jan 2026 (Monday) :
+	
+Assignment 01 : 
+
+Microsoft Windows [Version 10.0.26200.7462]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ABHIJEET>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| class              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create database s3_ass1;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> use s3_ass1;
+Database changed
+mysql> create table student(rollno integer, Name char(30), phoneNo integer, addre char(30));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | YES  |     | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| addre   | char(30) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table student add primary key (rollNo);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | NO   | PRI | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| addre   | char(30) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table student add emailId char(50);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | NO   | PRI | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| addre   | char(30) | YES  |     | NULL    |       |
+| emailId | char(50) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table student rename column addre to Address;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | NO   | PRI | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| Address | char(30) | YES  |     | NULL    |       |
+| emailId | char(50) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student values(1, 'Abhijeet', 123456, 'Bhilad', 'abhijeet@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(2, 'Shubham', 841693, 'Paithan', 'shubham@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(2, 'Kshitij', 845126, 'Shirampur', 'kshitij.com');
+ERROR 1062 (23000): Duplicate entry '2' for key 'student.PRIMARY'
+mysql> insert into student values(3, 'Kshitij', 845126, 'Shirampur', 'kshitij.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(4, 'Sahil', 789764, 'Malkapur', 'sahil@.com');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from student;
++--------+----------+---------+-----------+--------------------+
+| rollno | Name     | phoneNo | Address   | emailId            |
++--------+----------+---------+-----------+--------------------+
+|      1 | Abhijeet |  123456 | Bhilad    | abhijeet@gmail.com |
+|      2 | Shubham  |  841693 | Paithan   | shubham@gmail.com  |
+|      3 | Kshitij  |  845126 | Shirampur | kshitij.com        |
+|      4 | Sahil    |  789764 | Malkapur  | sahil@.com         |
++--------+----------+---------+-----------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> create table faculty(facultyNo integer, department char(30), course char(30));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc faculty;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| facultyNo  | int      | YES  |     | NULL    |       |
+| department | char(30) | YES  |     | NULL    |       |
+| course     | char(30) | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table faculty primary key (facultyNo);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primary key (facultyNo)' at line 1
+mysql> alter table faculty add primary key (facultyNo);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| facultyNo  | int      | NO   | PRI | NULL    |       |
+| department | char(30) | YES  |     | NULL    |       |
+| course     | char(30) | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table faculty add faculty_email char(50);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| facultyNo     | int      | NO   | PRI | NULL    |       |
+| department    | char(30) | YES  |     | NULL    |       |
+| course        | char(30) | YES  |     | NULL    |       |
+| faculty_email | char(50) | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table faculty rename department to Department;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to Department' at line 1
+mysql> alter table faculty rename column department to Department;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| facultyNo     | int      | NO   | PRI | NULL    |       |
+| Department    | char(30) | YES  |     | NULL    |       |
+| course        | char(30) | YES  |     | NULL    |       |
+| faculty_email | char(50) | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table faculty rename column course to Course;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| facultyNo     | int      | NO   | PRI | NULL    |       |
+| Department    | char(30) | YES  |     | NULL    |       |
+| Course        | char(30) | YES  |     | NULL    |       |
+| faculty_email | char(50) | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into faculty values(1, 'Information Technology', 'IT', 'it@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into faculty values(2, 'Computer Science', 'CS', 'cs@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into faculty values(3, 'Civil', 'Civil', 'civil@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into faculty values(4, 'Mechanical', 'Mechanical', 'mechanical@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from faculty;
++-----------+------------------------+------------+----------------------+
+| facultyNo | Department             | Course     | faculty_email        |
++-----------+------------------------+------------+----------------------+
+|         1 | Information Technology | IT         | it@gmail.com         |
+|         2 | Computer Science       | CS         | cs@gmail.com         |
+|         3 | Civil                  | Civil      | civil@gmail.com      |
+|         4 | Mechanical             | Mechanical | mechanical@gmail.com |
++-----------+------------------------+------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;
++--------+----------+---------+-----------+--------------------+
+| rollno | Name     | phoneNo | Address   | emailId            |
++--------+----------+---------+-----------+--------------------+
+|      1 | Abhijeet |  123456 | Bhilad    | abhijeet@gmail.com |
+|      2 | Shubham  |  841693 | Paithan   | shubham@gmail.com  |
+|      3 | Kshitij  |  845126 | Shirampur | kshitij.com        |
+|      4 | Sahil    |  789764 | Malkapur  | sahil@.com         |
++--------+----------+---------+-----------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> update student set emailId = 'kshitij@gmail.com' where rollno = 3;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set emailId = 'sahil@gmail.com' where rollno = 4;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++--------+----------+---------+-----------+--------------------+
+| rollno | Name     | phoneNo | Address   | emailId            |
++--------+----------+---------+-----------+--------------------+
+|      1 | Abhijeet |  123456 | Bhilad    | abhijeet@gmail.com |
+|      2 | Shubham  |  841693 | Paithan   | shubham@gmail.com  |
+|      3 | Kshitij  |  845126 | Shirampur | kshitij@gmail.com  |
+|      4 | Sahil    |  789764 | Malkapur  | sahil@gmail.com    |
++--------+----------+---------+-----------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from faculty;
++-----------+------------------------+------------+----------------------+
+| facultyNo | Department             | Course     | faculty_email        |
++-----------+------------------------+------------+----------------------+
+|         1 | Information Technology | IT         | it@gmail.com         |
+|         2 | Computer Science       | CS         | cs@gmail.com         |
+|         3 | Civil                  | Civil      | civil@gmail.com      |
+|         4 | Mechanical             | Mechanical | mechanical@gmail.com |
++-----------+------------------------+------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table student add Course char(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++--------+----------+---------+-----------+--------------------+--------+
+| rollno | Name     | phoneNo | Address   | emailId            | Course |
++--------+----------+---------+-----------+--------------------+--------+
+|      1 | Abhijeet |  123456 | Bhilad    | abhijeet@gmail.com | NULL   |
+|      2 | Shubham  |  841693 | Paithan   | shubham@gmail.com  | NULL   |
+|      3 | Kshitij  |  845126 | Shirampur | kshitij@gmail.com  | NULL   |
+|      4 | Sahil    |  789764 | Malkapur  | sahil@gmail.com    | NULL   |
++--------+----------+---------+-----------+--------------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> update student set Course = 'IT' where rollno = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set Course = 'CS' where rollno = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set Course = 'Civil' where rollno = 3;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set Course = 'Civil' where rollno = 3;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update student set Course = 'Mechanical' where rollno = 4;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++--------+----------+---------+-----------+--------------------+------------+
+| rollno | Name     | phoneNo | Address   | emailId            | Course     |
++--------+----------+---------+-----------+--------------------+------------+
+|      1 | Abhijeet |  123456 | Bhilad    | abhijeet@gmail.com | IT         |
+|      2 | Shubham  |  841693 | Paithan   | shubham@gmail.com  | CS         |
+|      3 | Kshitij  |  845126 | Shirampur | kshitij@gmail.com  | Civil      |
+|      4 | Sahil    |  789764 | Malkapur  | sahil@gmail.com    | Mechanical |
++--------+----------+---------+-----------+--------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from faculty;
++-----------+------------------------+------------+----------------------+
+| facultyNo | Department             | Course     | faculty_email        |
++-----------+------------------------+------------+----------------------+
+|         1 | Information Technology | IT         | it@gmail.com         |
+|         2 | Computer Science       | CS         | cs@gmail.com         |
+|         3 | Civil                  | Civil      | civil@gmail.com      |
+|         4 | Mechanical             | Mechanical | mechanical@gmail.com |
++-----------+------------------------+------------+----------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc faculty;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| facultyNo     | int      | NO   | PRI | NULL    |       |
+| Department    | char(30) | YES  |     | NULL    |       |
+| Course        | char(30) | YES  |     | NULL    |       |
+| faculty_email | char(50) | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | NO   | PRI | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| Address | char(30) | YES  |     | NULL    |       |
+| emailId | char(50) | YES  |     | NULL    |       |
+| Course  | char(20) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> truncate table student;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> select * from student
+    -> select * from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from student' at line 2
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | NO   | PRI | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| Address | char(30) | YES  |     | NULL    |       |
+| emailId | char(50) | YES  |     | NULL    |       |
+| Course  | char(20) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> truncate table faculty;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from faculty;
+Empty set (0.00 sec)
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| rollno  | int      | NO   | PRI | NULL    |       |
+| Name    | char(30) | YES  |     | NULL    |       |
+| phoneNo | int      | YES  |     | NULL    |       |
+| Address | char(30) | YES  |     | NULL    |       |
+| emailId | char(50) | YES  |     | NULL    |       |
+| Course  | char(20) | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc faculty;
++---------------+----------+------+-----+---------+-------+
+| Field         | Type     | Null | Key | Default | Extra |
++---------------+----------+------+-----+---------+-------+
+| facultyNo     | int      | NO   | PRI | NULL    |       |
+| Department    | char(30) | YES  |     | NULL    |       |
+| Course        | char(30) | YES  |     | NULL    |       |
+| faculty_email | char(50) | YES  |     | NULL    |       |
++---------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc student;
+ERROR 1146 (42S02): Table 's3_ass1.student' doesn't exist
+mysql> drop table faculty;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc faculty;
+ERROR 1146 (42S02): Table 's3_ass1.faculty' doesn't exist
+mysql>
+
+____________________________________________________________________________________________________________________________________________________________________________________________
+
+
+Date - 12 Jan 2026 (Monday) :
+
+
+Microsoft Windows [Version 10.0.26200.7462]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ABHIJEET>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| class              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| s3_ass1            |
+| sys                |
++--------------------+
+6 rows in set (0.02 sec)
+
+mysql> use s3_ass1
+Database changed
+mysql> create table student(SId integer, SName char(50), Phone No. integer, SAddress char(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'No. integer, SAddress char(50))' at line 1
+mysql> create table student(SId integer, SName char(50), Phone No integer, SAddress char(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'No integer, SAddress char(50))' at line 1
+mysql> create table student(SId integer, SName char(50), SPhoneNo integer, SAddress char(50));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table faculty(EmpId integer, FName  char(50), FDepartment char(50), FCourses char(50));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table teaches(SId integer, EmpId  integer, Date char(10));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc teaches;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| SId   | int      | YES  |     | NULL    |       |
+| EmpId | int      | YES  |     | NULL    |       |
+| Date  | char(10) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_s3_ass1 |
++-------------------+
+| faculty           |
+| student           |
+| teaches           |
++-------------------+
+3 rows in set (0.04 sec)
+
+mysql> alter table teaches add foreign key (EmpId) references faculty(EmpId);
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'teaches_ibfk_1' in the referenced table 'faculty'
+mysql> desc student;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| SId      | int      | YES  |     | NULL    |       |
+| SName    | char(50) | YES  |     | NULL    |       |
+| SPhoneNo | int      | YES  |     | NULL    |       |
+| SAddress | char(50) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc faculty
+    ->
+    -> ;
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| EmpId       | int      | YES  |     | NULL    |       |
+| FName       | char(50) | YES  |     | NULL    |       |
+| FDepartment | char(50) | YES  |     | NULL    |       |
+| FCourses    | char(50) | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table teaches add foreign key (SId) references student(SId);
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'teaches_ibfk_1' in the referenced table 'student'
+mysql> alter table student add primary key (SId);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table teaches add foreign key (SId) references student(SId);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table faculty add primary key (EmpId);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table teaches add foreign key (EmpId) references faculty(EmpId);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc teaches;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| SId   | int      | YES  | MUL | NULL    |       |
+| EmpId | int      | YES  | MUL | NULL    |       |
+| Date  | char(10) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc student;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| SId      | int      | NO   | PRI | NULL    |       |
+| SName    | char(50) | YES  |     | NULL    |       |
+| SPhoneNo | int      | YES  |     | NULL    |       |
+| SAddress | char(50) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc faculty;
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| EmpId       | int      | NO   | PRI | NULL    |       |
+| FName       | char(50) | YES  |     | NULL    |       |
+| FDepartment | char(50) | YES  |     | NULL    |       |
+| FCourses    | char(50) | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select user from mysql.user;
++------------------+
+| user             |
++------------------+
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
++------------------+
+4 rows in set (0.00 sec)
+
+mysql> create user 'sky'@'localhost' identified by 'Sky';
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select user from mysql.user;
++------------------+
+| user             |
++------------------+
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
+| sky              |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql> use databases;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use s3_ass1;;
+Database changed
+ERROR:
+No query specified
+
+mysql> show tables;
++-------------------+
+| Tables_in_s3_ass1 |
++-------------------+
+| faculty           |
+| student           |
+| teaches           |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> grant all privileges on *.* to 'sky'@'localhost';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> insert into table student values(101, 'Kshitij', 123456, 'Shirampur');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table student values(101, 'Kshitij', 123456, 'Shirampur')' at line 1
+mysql> show tables;
++-------------------+
+| Tables_in_s3_ass1 |
++-------------------+
+| faculty           |
+| student           |
+| teaches           |
++-------------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from student;
++-----+----------+----------+-----------+
+| SId | SName    | SPhoneNo | SAddress  |
++-----+----------+----------+-----------+
+| 101 | Kshitij  |   123456 | Shirampur |
+| 102 | Shubham  |   167896 | Paithan   |
+| 103 | Abhijeet |   345678 | Malkapur  |
++-----+----------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from faculty;
++-------+------------+-------------+----------------+
+| EmpId | FName      | FDepartment | FCourses       |
++-------+------------+-------------+----------------+
+|  1001 | Sudesh Sir | IT          | Cyber Security |
+|  1002 | Sampat Sir | Maths       | Mathematics    |
+|  1003 | Laxman Sir | CS          | PHP            |
++-------+------------+-------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> revoke all privileges on *.* from 'sky'@'localhost';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql>
+
+
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ABHIJEET> mysql -u sky -p
+Enter password: ***
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select user from mysql.user;
++------------------+
+| user             |
++------------------+
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
+| sky              |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| class              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| s3_ass1            |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use s3_ass1;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_s3_ass1 |
++-------------------+
+| faculty           |
+| student           |
+| teaches           |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc teaches;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| SId   | int      | YES  | MUL | NULL    |       |
+| EmpId | int      | YES  | MUL | NULL    |       |
+| Date  | char(10) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc student;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| SId      | int      | NO   | PRI | NULL    |       |
+| SName    | char(50) | YES  |     | NULL    |       |
+| SPhoneNo | int      | YES  |     | NULL    |       |
+| SAddress | char(50) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc faculty;
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| EmpId       | int      | NO   | PRI | NULL    |       |
+| FName       | char(50) | YES  |     | NULL    |       |
+| FDepartment | char(50) | YES  |     | NULL    |       |
+| FCourses    | char(50) | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into table student values(101, 'Kshitij Shinde', 123456, 'Shirampur');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table student values(101, 'Kshitij Shinde', 123456, 'Shirampur')' at line 1
+mysql> insert into table student values(101, 'Kshitij', 123456, 'Shirampur');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table student values(101, 'Kshitij', 123456, 'Shirampur')' at line 1
+mysql> insert into student values(101, 'Kshitij', 123456, 'Shirampur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(102, 'Shubham', 167896, 'Paithan');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into student values(103, 'Abhijeet', 345678, 'Malkapur');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into faculty values(1001, 'Sudesh Sir', 'IT', 'Cyber Security');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into faculty values(1002, 'Sampat Sir', 'Maths', 'Mathematics');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into faculty values(1003, 'Laxman Sir', 'CS', 'PHP');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * frem student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'frem student' at line 1
+mysql> select * from student;
++-----+----------+----------+-----------+
+| SId | SName    | SPhoneNo | SAddress  |
++-----+----------+----------+-----------+
+| 101 | Kshitij  |   123456 | Shirampur |
+| 102 | Shubham  |   167896 | Paithan   |
+| 103 | Abhijeet |   345678 | Malkapur  |
++-----+----------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from faculty;
++-------+------------+-------------+----------------+
+| EmpId | FName      | FDepartment | FCourses       |
++-------+------------+-------------+----------------+
+|  1001 | Sudesh Sir | IT          | Cyber Security |
+|  1002 | Sampat Sir | Maths       | Mathematics    |
+|  1003 | Laxman Sir | CS          | PHP            |
++-------+------------+-------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ABHIJEET> mysql -u sky -p
+Enter password: ***
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> use s3_ass1;
+ERROR 1044 (42000): Access denied for user 'sky'@'localhost' to database 's3_ass1'
+mysql>
