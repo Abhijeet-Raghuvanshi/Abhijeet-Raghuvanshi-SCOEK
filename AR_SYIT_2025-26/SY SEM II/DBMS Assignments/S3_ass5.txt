@@ -1,0 +1,201 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ABHIJEET> mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE database s3ass5;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> create table borrow(rollin int primary key, name varchar(50), dateOfIssue DATE, bookName varchar(50), status char);
+ERROR 1046 (3D000): No database selected
+mysql> use s3ass5;
+Database changed
+mysql> create table borrow(rollin int primary key, name varchar(50), dateOfIssue DATE, bookName varchar(50), status char);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create table borrow(rollin int primary key, fineDate DATE, amount decimal(10,2));
+ERROR 1050 (42S01): Table 'borrow' already exists
+mysql> create table fine(rollin int primary key, fineDate DATE, amount decimal(10,2));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> delimiter //
+mysql> CREATE PROCEDURE calfine(IN Roll_no3 INT, IN name_of_book VARCHAR(20))
+    -> BEGIN
+    ->     DECLARE no_of_days INT;
+    ->     DECLARE fine_amount INT DEFAULT 0;
+    ->     DECLARE date1 DATE;
+    ->
+    ->     SELECT date_of_issue
+    ->     INTO date1
+    ->     FROM Borrower
+    ->     WHERE Roll_no1 = Roll_no3
+    ->       AND Name_of_book = name_of_book;
+    ->
+    ->     SET no_of_days = DATEDIFF(CURDATE(), date1);
+    ->
+    ->     -- fine rules
+    ->     IF no_of_days > 15 AND no_of_days <= 30 THEN
+    ->         SET fine_amount = (no_of_days - 15) * 5;
+    ->
+    ->     ELSEIF no_of_days > 30 THEN
+    ->         SET fine_amount = (15 * 5) + (no_of_days - 30) * 50;
+    ->     END IF;
+    ->
+    ->     SELECT CONCAT('Fine is ', fine_amount);
+    ->
+    ->     IF fine_amount > 0 THEN
+    ->         INSERT INTO Fine VALUES (Roll_no3, CURDATE(), fine_amount);
+    ->
+    ->         UPDATE Borrower
+    ->         SET Status = 'R'
+    ->         WHERE Roll_no1 = Roll_no3;
+    ->     END IF;
+    ->
+    ->     END IF;
+    ->
+    -> //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IF' at line 33
+mysql> CREATE PROCEDURE calfine(IN Roll_no3 INT, IN name_of_book VARCHAR(20))
+    -> BEGIN
+    ->     DECLARE no_of_days INT;
+    ->     DECLARE fine_amount INT DEFAULT 0;
+    ->     DECLARE date1 DATE;
+    ->
+    ->     SELECT dateOfIssue
+    ->     INTO date1
+    ->     FROM Borrow
+    ->     WHERE rollin = Roll_no3
+    ->       AND bookName = name_of_book;
+    ->
+    ->     SET no_of_days = DATEDIFF(CURDATE(), date1);
+    ->
+    ->     -- fine rules
+    ->     IF no_of_days > 15 AND no_of_days <= 30 THEN
+    ->         SET fine_amount = (no_of_days - 15) * 5;
+    ->
+    ->     ELSEIF no_of_days > 30 THEN
+    ->         SET fine_amount = (15 * 5) + (no_of_days - 30) * 50;
+    ->     END IF;
+    ->
+    ->     SELECT CONCAT('Fine is ', fine_amount);
+    ->
+    ->     IF fine_amount > 0 THEN
+    ->         INSERT INTO fine VALUES (Roll_no3, CURDATE(), fine_amount);
+    ->
+    ->         UPDATE Borrower
+    ->         SET Status = 'R'
+    ->         WHERE rollin = Roll_no3;
+    ->     END IF;
+    ->
+    -> END //
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> INSERT INTO Borrower VALUES
+    ->     -> (1,'Amit','2024-12-20','DBMS','I'),
+    ->     -> (2,'Ravi','2025-01-25','OS','I'),
+    ->     -> (3,'Neha','2025-02-01','JAVA','I'),
+    ->     -> (4,'Priya','2025-02-10','PYTHON','I'),
+    ->     -> (5,'Karan','2025-01-01','CN','I');
+    ->     -> (5,'Karan','2025-01-01','CN','I');
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    -> ^C
+mysql> delimiter;
+    -> ^C
+mysql> delimiter ;
+mysql> INSERT INTO Borrow VALUES-> (1,'Amit','2024-12-20','DBMS','I'),
+    ->     -> (2,'Ravi','2025-01-25','OS','I'),
+    ->     -> (3,'Neha','2025-02-01','JAVA','I'),
+    ->     -> (4,'Priya','2025-02-10','PYTHON','I'),
+    ->     -> (5,'Karan','2025-01-01','CN','I');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> (1,'Amit','2024-12-20','DBMS','I'),
+    -> (2,'Ravi','2025-01-25','OS','I'),
+' at line 1
+mysql> INSERT INTO Borrow VALUES
+    -> (1,'Amit','2024-12-20','DBMS','I'),
+    -> (2,'Ravi','2025-01-25','OS','I'),
+    -> (3,'Neha','2025-02-01','JAVA','I'),
+    -> (4,'Priya','2025-02-10','PYTHON','I'),
+    -> (5,'Karan','2025-01-01','CN','I');
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> CALL calfine(1,'DBMS');
++---------------------------------+
+| CONCAT('Fine is ', fine_amount) |
++---------------------------------+
+| Fine is 20075                   |
++---------------------------------+
+1 row in set (0.04 sec)
+
+ERROR 1146 (42S02): Table 's3ass5.borrower' doesn't exist
+mysql> CALL calfine(2,'OS');
++---------------------------------+
+| CONCAT('Fine is ', fine_amount) |
++---------------------------------+
+| Fine is 18275                   |
++---------------------------------+
+1 row in set (0.00 sec)
+
+ERROR 1146 (42S02): Table 's3ass5.borrower' doesn't exist
+mysql> CALL calfine(3,'JAVA');
++---------------------------------+
+| CONCAT('Fine is ', fine_amount) |
++---------------------------------+
+| Fine is 17925                   |
++---------------------------------+
+1 row in set (0.00 sec)
+
+ERROR 1146 (42S02): Table 's3ass5.borrower' doesn't exist
+mysql> CALL calfine(4,'PYTHON');
++---------------------------------+
+| CONCAT('Fine is ', fine_amount) |
++---------------------------------+
+| Fine is 17475                   |
++---------------------------------+
+1 row in set (0.00 sec)
+
+ERROR 1146 (42S02): Table 's3ass5.borrower' doesn't exist
+mysql> CALL calfine(5,'CN');
++---------------------------------+
+| CONCAT('Fine is ', fine_amount) |
++---------------------------------+
+| Fine is 19475                   |
++---------------------------------+
+1 row in set (0.00 sec)
+
+ERROR 1146 (42S02): Table 's3ass5.borrower' doesn't exist
+mysql> SELECT * FROM FINE;
++--------+------------+----------+
+| rollin | fineDate   | amount   |
++--------+------------+----------+
+|      1 | 2026-02-23 | 20075.00 |
+|      2 | 2026-02-23 | 18275.00 |
+|      3 | 2026-02-23 | 17925.00 |
+|      4 | 2026-02-23 | 17475.00 |
+|      5 | 2026-02-23 | 19475.00 |
++--------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql
